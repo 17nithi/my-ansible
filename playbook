@@ -1,0 +1,13 @@
+- hosts: all
+  remote_user: azureuser
+  become: yes
+  tasks:
+    - name : Downloading apache web server
+      apt :
+        name: apache2
+        state: present
+    - name : copy the  file with permissions
+      copy:
+        src : index.html
+        dest: /var/www/html
+        mode: 644
