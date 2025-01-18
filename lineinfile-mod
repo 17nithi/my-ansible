@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: change the port number using lineinfile module
+      lineinfile:
+         path: /var/www/html/index.html
+         regexp: 'PORTS='
+         line: PORTS=9090
