@@ -1,0 +1,18 @@
+vim database
+   username: Nithish
+   password: nithi1234
+
+-----------------------------------------------------
+
+---
+- hosts: all
+  become: yes
+  vars_files:
+    -  database
+  tasks:
+     - name: download apache2
+       debug:
+         msg: "Hi, I am {{ username }} & password is {{ password }}"
+------------------------------------------------------
+
+##vars_files is used when variables are in different files
