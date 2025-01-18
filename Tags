@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    type: apache2
+  tasks:
+    - name: Install apache2 package
+      apt:
+        name: "{{ type }}"
+        state: present
+      tags:
+        - update
+
+    - name: Start apache2 service
+      service:
+        name: "{{ type }}"
+        state: started
+        enabled: yes
