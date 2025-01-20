@@ -1,0 +1,17 @@
+    ---
+    - hosts: all
+      become: yes
+      tasks:
+        - name: Download tomcat
+          get_url:
+            url: "https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.98/bin/apache-tomcat-9.0.98.tar.gz"
+            dest: "/opt/apache-tomcat-9.0.98.tar.gz"
+        
+        - name: unarchieve tomcat tar file
+          unarchive:
+            src: "/opt/apache-tomcat-9.0.98.tar.gz"
+            dest: "/opt/"
+            remote_src: yes
+        
+        - name: start tomcat
+          shell: "/opt/apache-tomcat-9.0.98/bin/startup.sh"
